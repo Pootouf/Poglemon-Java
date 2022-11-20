@@ -79,7 +79,7 @@ public class Screen extends JComponent {
 		super.paintComponent(g);
 		Graphics2D g2D = (Graphics2D) g;
 		
-		if(PoglemonApp.gameState == PoglemonApp.PLAY_STATE || PoglemonApp.gameState == PoglemonApp.PAUSE_STATE) {
+		if(PoglemonApp.gameState == PoglemonApp.PLAY_STATE || PoglemonApp.gameState == PoglemonApp.PAUSE_STATE || PoglemonApp.gameState == PoglemonApp.GAMEMENU_STATE) {
 		
 			spriteManager.draw(g2D);
 		

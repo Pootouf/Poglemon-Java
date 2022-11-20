@@ -70,6 +70,8 @@ public class Model{
 	
 	private List<AbstractObject> objectList;
 	
+	private Poglemon poglemon = new Poglemon(1, null, 5, true);
+	
 	
 	
 	//CONSTRUCTEURS

@@ -41,7 +41,7 @@ public class PoglemonApp {
 	
 	//SYSTEM SETTING
 	//Attente avant de détecter un appui de touche
-	public static final int WAIT_BEFORE_ACTION = 2;
+	public static final int WAIT_BEFORE_ACTION = 5;
 	//FPS
 	public static int FPS = 200;
 	
@@ -56,6 +56,7 @@ public class PoglemonApp {
 	public static final int MENU_STATE = 0;
 	public static final int PLAY_STATE = 1;
 	public static final int PAUSE_STATE = 2;
+	public static final int GAMEMENU_STATE = 3;
 	
 	
 	

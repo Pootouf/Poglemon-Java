@@ -30,13 +30,11 @@ public class UIManager {
 		try {
 			is = new FileInputStream("res/font/Minecraft.ttf");
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			font = Font.createFont(Font.TRUETYPE_FONT, is);
 		} catch (FontFormatException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		font = font.deriveFont((float) PoglemonApp.SPRITE_SIZEX / 2);
@@ -122,7 +120,7 @@ public class UIManager {
 		g.setFont(font.deriveFont(Font.BOLD, (float)PoglemonApp.SPRITE_SIZEX * 2));
 		String title = "Poglemon";
 		int x = getCenterXForText(title, g);
-		int y = PoglemonApp.SPRITE_SIZEY * 4;
+		int y = PoglemonApp.SPRITE_SIZEY * (PoglemonApp.SCREEN_TILEY / 4);
 		//SHADOW
 		g.setColor(Color.black);
 		g.drawString(title, x + 7, y + 7);
@@ -137,7 +135,7 @@ public class UIManager {
 		
 		String text = "Nouvelle Partie";
 		x = getCenterXForText(text, g);
-		y += PoglemonApp.SPRITE_SIZEY * 5;
+		y += PoglemonApp.SPRITE_SIZEY * (PoglemonApp.SCREEN_TILEY / 4);
 		g.drawString(text, x, y);
 		if(commandNum == 0) {
 			g.drawString(">", x - PoglemonApp.SPRITE_SIZEX, y);
@@ -145,7 +143,7 @@ public class UIManager {
 		
 		text = "Charger une partie";
 		x = getCenterXForText(text, g);
-		y += PoglemonApp.SPRITE_SIZEY * 1.5;
+		y += PoglemonApp.SPRITE_SIZEY * (PoglemonApp.SCREEN_TILEY / 8);
 		g.drawString(text, x, y);
 		if(commandNum == 1) {
 			g.drawString(">", x - PoglemonApp.SPRITE_SIZEX, y);
@@ -153,7 +151,7 @@ public class UIManager {
 		
 		text = "Options";
 		x = getCenterXForText(text, g);
-		y += PoglemonApp.SPRITE_SIZEY * 1.5;
+		y += PoglemonApp.SPRITE_SIZEY * (PoglemonApp.SCREEN_TILEY / 8);
 		g.drawString(text, x, y);
 		if(commandNum == 2) {
 			g.drawString(">", x - PoglemonApp.SPRITE_SIZEX, y);
@@ -161,7 +159,7 @@ public class UIManager {
 		
 		text = "Quitter";
 		x = getCenterXForText(text, g);
-		y += PoglemonApp.SPRITE_SIZEY * 1.5;
+		y += PoglemonApp.SPRITE_SIZEY * (PoglemonApp.SCREEN_TILEY / 8);
 		g.drawString(text, x, y);
 		if(commandNum == 3) {
 			g.drawString(">", x - PoglemonApp.SPRITE_SIZEX, y);
