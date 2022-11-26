@@ -1,10 +1,13 @@
 package model;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+
+import main.PoglemonApp;
 
 public class Poglemon {
 	
@@ -171,7 +174,7 @@ public class Poglemon {
     public void initPoglemon(int ID_pog, String namePog, int niveauPog) {
     	isInit = true;
         ID = ID_pog;
-        if(namePog == ""){
+        if(namePog == "" || namePog == null){
             name = PoglemonIndex.STATS_POG_NAME_INDEX.get("pog" + "name" + String.valueOf(ID_pog));
         }else{
             name = namePog;
@@ -257,6 +260,20 @@ public class Poglemon {
 					e.printStackTrace();
 				}
 			}
+		}
+		resizeSprites();
+	}
+	
+	private void resizeSprites() {
+		for(int i = 0; i < 1000; i ++) {
+			if (SPRITES[i] == null ) {
+				continue;
+			}
+	      	BufferedImage scaledImage = new BufferedImage(PoglemonApp.SPRITE_SIZEX * 2, PoglemonApp.SPRITE_SIZEY * 2, SPRITES[i].getType());
+	      	Graphics2D g = (Graphics2D) scaledImage.getGraphics();
+	      	g.drawImage(SPRITES[i], 0, 0, PoglemonApp.SPRITE_SIZEX * 2, PoglemonApp.SPRITE_SIZEY * 2, null);
+	      	g.dispose();
+	      	SPRITES[i] = scaledImage;
 		}
 	}
 	

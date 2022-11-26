@@ -14,11 +14,8 @@ public class KeyControler implements KeyListener {
 	
 	//CONSTANTES DE CLASSE
 	
-	// la taille des sprites doit etre un multiple de NUMBER_OF_ANIM
-	public static final int NUMBER_OF_ANIM = PoglemonApp.SPRITE_SIZEX;
-	
-	public static final int BASE_SPEED = NUMBER_OF_ANIM / (PoglemonApp.SPRITE_SIZEX );
-	
+	// NUMBER_OF_ANIM doit etre multiple de sprite
+	public static final int NUMBER_OF_ANIM = 128;
 	
 	
 	//ATTRIBUTS
@@ -67,7 +64,7 @@ public class KeyControler implements KeyListener {
     	
     	
     	if(PoglemonApp.gameState == PoglemonApp.MENU_STATE) {
-    		view.UIManager ui = screen.uiManager();
+    		view.ui.UIManager ui = screen.uiManager();
 	        if (key == KeyEvent.VK_UP || key == KeyEvent.VK_Z) {
 	        	screen.playSoundEffect(1);
 	        	ui.increaseCommandNum(-1);
@@ -86,6 +83,9 @@ public class KeyControler implements KeyListener {
     	}
     	
     	
+    	
+    	
+    	
     	if(PoglemonApp.gameState == PoglemonApp.PAUSE_STATE) { 
     		if(key == KeyEvent.VK_ESCAPE) {
 	        	PoglemonApp.gameState = PoglemonApp.PLAY_STATE;
@@ -93,6 +93,89 @@ public class KeyControler implements KeyListener {
 	        }
     		return;
     	}
+    	
+    	
+    	
+    	
+    	if(PoglemonApp.gameState == PoglemonApp.GAMEMENU_STATE) { 
+    		view.ui.UIManager ui = screen.uiManager();
+    		if(key == KeyEvent.VK_M ) {
+	        	PoglemonApp.gameState = PoglemonApp.PLAY_STATE;
+	        }
+    		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_Z) {
+	        	screen.playSoundEffect(1);
+	        	ui.increaseCommandGameMenuNum(-1);
+	        }
+	
+	        if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
+	        	screen.playSoundEffect(1);
+	        	ui.increaseCommandGameMenuNum(1);
+	        }
+	        if (key == KeyEvent.VK_SPACE || key == KeyEvent.VK_ENTER) {
+	        	screen.playSoundEffect(1);
+	        	eventGameMenu(ui.getCommandGameMenuNum());
+	        }
+    		return;
+    	}
+    	
+    	
+    	
+    	if(PoglemonApp.gameState == PoglemonApp.TEAM_STATE) {
+    		view.ui.UIManager ui = screen.uiManager();
+    		int num = ui.getCommandTeamMenuNum();
+	        if (key == KeyEvent.VK_UP || key == KeyEvent.VK_Z) {
+	        	screen.playSoundEffect(1);
+	        	if(num == 0 || num == 6) {
+	        		ui.increaseCommandTeamMenuNum(-1);
+	        	} else {
+	        		ui.increaseCommandTeamMenuNum(-2);
+	        	}
+	        }
+	
+	        if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
+	        	screen.playSoundEffect(1);
+	        	if(num == 6 || num == 5) {
+	        		ui.increaseCommandTeamMenuNum(1);
+	        	} else {
+	        		ui.increaseCommandTeamMenuNum(2);
+	        	}
+	        }
+	        
+	        if (key == KeyEvent.VK_LEFT|| key == KeyEvent.VK_Q) {
+	        	if(num == 6) {
+	        		return;
+	        	}
+	        	screen.playSoundEffect(1);
+	        	if(num == 1 || num == 3 || num == 5) {
+	        		ui.increaseCommandTeamMenuNum(-1);
+	        	} else {
+	        		ui.increaseCommandTeamMenuNum(1);
+	        	}
+	        	
+	        }
+	        
+	        if (key == KeyEvent.VK_RIGHT|| key == KeyEvent.VK_D) {
+	        	if(num == 6) {
+	        		return;
+	        	}
+	        	screen.playSoundEffect(1);
+	        	if(num == 0 || num == 2 || num == 4) {
+	        		ui.increaseCommandTeamMenuNum(1);
+	        	} else {
+	        		ui.increaseCommandTeamMenuNum(-1);
+	        	}
+	        	
+	        }
+	        
+	        if (key == KeyEvent.VK_SPACE || key == KeyEvent.VK_ENTER) {
+	        	screen.playSoundEffect(1);
+	        	eventTeamMenu(num);
+	        }
+	        return;
+    	}
+    	
+    	
+    	
     	
     	
     	
@@ -131,6 +214,10 @@ public class KeyControler implements KeyListener {
 	        	PoglemonApp.gameState = PoglemonApp.PAUSE_STATE;
 	        	screen.stopMusic();
 	        }
+	        
+	        if(key == KeyEvent.VK_M) {
+	        	PoglemonApp.gameState = PoglemonApp.GAMEMENU_STATE;
+	        }
 	        return;
     	}
     }
@@ -159,22 +246,32 @@ public class KeyControler implements KeyListener {
 		long lastTime = System.nanoTime();
 		long currentTime;
     	for (int i = 0; i < NUMBER_OF_ANIM; i++) {
+    		try {
+    			if(i % PoglemonApp.MOVE_SPEED == 0) {
+    				Thread.sleep(1);
+    			}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+    		if(i % (NUMBER_OF_ANIM / PoglemonApp.SPRITE_SIZEX) != 0) {
+    			continue;
+    		}
 			switch(direction) {
 				case "up":
 					player.setDirection("up");
-					player.moveUp(PoglemonApp.SPRITE_SIZEY / NUMBER_OF_ANIM);
+					player.moveUp(1);
 					break;
 				case "down":
 					player.setDirection("down");
-					player.moveDown(PoglemonApp.SPRITE_SIZEY / NUMBER_OF_ANIM);
+					player.moveDown(1);
 					break;
 				case "left":
 					player.setDirection("left");
-					player.moveLeft(PoglemonApp.SPRITE_SIZEX / NUMBER_OF_ANIM);
+					player.moveLeft(1);
 					break;
 				case "right":
 					player.setDirection("right");
-					player.moveRight(PoglemonApp.SPRITE_SIZEX / NUMBER_OF_ANIM);
+					player.moveRight(1);
 					break;
 			}
 			currentTime = System.nanoTime();
@@ -191,15 +288,13 @@ public class KeyControler implements KeyListener {
 				timer = 0;
 				drawCount = 0;
 			}
-			try {
-				Thread.sleep((int)(BASE_SPEED / PoglemonApp.MOVE_SPEED));
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
     	}
     }
     
-    public void eventMenu(int commandNum) {
+    
+    //OUTILS
+    
+    private void eventMenu(int commandNum) {
 		switch(commandNum) {
 			case 0:
 				PoglemonApp.gameState = PoglemonApp.PLAY_STATE;
@@ -216,5 +311,56 @@ public class KeyControler implements KeyListener {
 				
 		}
 	}
+    
+    private void eventGameMenu(int commandGameMenuNum) {
+		switch(commandGameMenuNum) {
+			case 0:
+				PoglemonApp.gameState = PoglemonApp.TEAM_STATE;
+				break;
+			case 1:
+				System.out.println("no pc");
+				break;
+			case 2:
+				System.out.println("no save");
+				break;
+			case 3:
+				System.out.println("no option");
+				break;
+			case 4:
+				PoglemonApp.gameState = PoglemonApp.PLAY_STATE;
+				break;
+			case 5:
+				PoglemonApp.quit();
+				
+		}
+	}
+    
+    
+    private void eventTeamMenu(int commandTeamMenuNum) {
+    	switch(commandTeamMenuNum) {
+		case 0:
+			System.out.println("pog1");
+			break;
+		case 1:
+			System.out.println("pog2");
+			break;
+		case 2:
+			System.out.println("pog3");
+			break;
+		case 3:
+			System.out.println("pog4");
+			break;
+		case 4:
+			System.out.println("pog5");
+			break;
+		case 5:
+			System.out.println("pog6");
+			break;
+		case 6:
+			PoglemonApp.gameState = PoglemonApp.GAMEMENU_STATE;
+			break;
+			
+	}
+    }
 
 }

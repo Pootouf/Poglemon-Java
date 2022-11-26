@@ -16,6 +16,7 @@ public class Sound {
 	
 	//ATTRIBUTS
 	
+	private Clip musicData[] = new Clip[30];
 	private Clip music;
 	private URL soundFile[] = new URL[30];
 	
@@ -24,26 +25,35 @@ public class Sound {
 	public Sound() {
 		soundFile[0] = getClass().getResource("/sounds/musique.wav");
 		soundFile[1] = getClass().getResource("/sounds/bouton.wav");
+		
+		for(int i = 0; i < 2; i++) {
+			try {
+				AudioInputStream ais = AudioSystem.getAudioInputStream(soundFile[i]);
+				musicData[i]= AudioSystem.getClip();
+				musicData[i].open(ais);
+				ais.close();
+			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	
 	//COMMANDES
 	
 	public void setFile(int i) {
-		try {
-			AudioInputStream ais = AudioSystem.getAudioInputStream(soundFile[i]);
-			music = AudioSystem.getClip();
-			music.open(ais);
-			
-		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(music != null && music.getLongFramePosition() == music.getFrameLength()) {
+			music.setFramePosition(0);
 		}
+		music = musicData[i];
 	}
 	
 	public void play() {
-		music.start();
-		setVolume(VOLUME);
+		if( music.getLongFramePosition() == 0 || music.getLongFramePosition() == music.getFrameLength()) {
+			music.start();
+			setVolume(VOLUME);
+		}
 	}
 	
 	public void loop() {

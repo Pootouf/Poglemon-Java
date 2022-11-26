@@ -49,7 +49,7 @@ public class PoglemonApp {
 	//Définit si le joueur peut passer à travers un mur
 	public static boolean CAN_PASS_WALL = false;
 	//Définit la vitesse du joueur
-	public static double MOVE_SPEED = 1;
+	public static double MOVE_SPEED = 2.0;
 	
 	//STATE_SETTING
 	public static int gameState;
@@ -57,6 +57,7 @@ public class PoglemonApp {
 	public static final int PLAY_STATE = 1;
 	public static final int PAUSE_STATE = 2;
 	public static final int GAMEMENU_STATE = 3;
+	public static final int TEAM_STATE = 4;
 	
 	
 	

@@ -70,7 +70,7 @@ public class Model{
 	
 	private List<AbstractObject> objectList;
 	
-	private Poglemon poglemon = new Poglemon(1, null, 5, true);
+	private Poglemon[] poglemonTeam = new Poglemon[6];
 	
 	
 	
@@ -85,6 +85,7 @@ public class Model{
 		player = new Player();
 		objectList = new ArrayList<AbstractObject>();
 		AbstractObject.initObject(objectList);
+		poglemonTeam[0] = new Poglemon(1, "Robert", 5, true);
 	}
 	
 	
@@ -117,7 +118,14 @@ public class Model{
 	}
 	
 	public AbstractObject getObject(int x, int y) {
+		if(x < 0 || y < 0) {
+			return null;
+		}
 		return AbstractObject.objectTab[x][y];
+	}
+	
+	public Poglemon getPoglemonTeam(int x) {
+		return poglemonTeam[x];
 	}
 	
 	

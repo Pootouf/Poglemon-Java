@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 public class DirtTile extends Tile implements ITile {
 	
-	//REQUETES
+	//ATTRIBUTS
 	
     private static BufferedImage sprite;
 	

@@ -9,6 +9,7 @@ import javax.swing.JComponent;
 import main.PoglemonApp;
 import main.Sound;
 import model.Model;
+import view.ui.UIManager;
 
 public class Screen extends JComponent {
 	
@@ -44,7 +45,7 @@ public class Screen extends JComponent {
 		soundEffect = new Sound();
 		this.playerSprite = playerSprite;
 		this.setPreferredSize(new Dimension(PoglemonApp.SCREEN_WIDTH, PoglemonApp.SCREEN_HEIGHT));
-		this.setDoubleBuffered(true);
+		this.setDoubleBuffered(false);
 	}
 	
 	//REQUETES
@@ -79,7 +80,7 @@ public class Screen extends JComponent {
 		super.paintComponent(g);
 		Graphics2D g2D = (Graphics2D) g;
 		
-		if(PoglemonApp.gameState == PoglemonApp.PLAY_STATE || PoglemonApp.gameState == PoglemonApp.PAUSE_STATE || PoglemonApp.gameState == PoglemonApp.GAMEMENU_STATE) {
+		if(PoglemonApp.gameState == PoglemonApp.PLAY_STATE || PoglemonApp.gameState == PoglemonApp.PAUSE_STATE || PoglemonApp.gameState == PoglemonApp.GAMEMENU_STATE || PoglemonApp.gameState == PoglemonApp.TEAM_STATE) {
 		
 			spriteManager.draw(g2D);
 		
