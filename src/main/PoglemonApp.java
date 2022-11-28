@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import controler.KeyControler;
+import controler.MouseControler;
 import model.Model;
 import view.Screen;
 import view.Sprite;
@@ -52,12 +53,14 @@ public class PoglemonApp {
 	public static double MOVE_SPEED = 2.0;
 	
 	//STATE_SETTING
+	public static final int NUMBER_OF_STATE = 6;
 	public static int gameState;
-	public static final int MENU_STATE = 0;
+	public static final int TITLE_STATE = 0;
 	public static final int PLAY_STATE = 1;
 	public static final int PAUSE_STATE = 2;
 	public static final int GAMEMENU_STATE = 3;
 	public static final int TEAM_STATE = 4;
+	public static final int DESCRIPTOR_STATE = 5;
 	
 	
 	
@@ -79,7 +82,7 @@ public class PoglemonApp {
 	
 	//CONSTRUCTEURS
 	public PoglemonApp() {
-		gameState = MENU_STATE;
+		gameState = TITLE_STATE;
 		createModel();
 		createView();
 		placeComponents();
@@ -150,7 +153,11 @@ public class PoglemonApp {
 			e.printStackTrace();
 		}
 		
-		mainFrame.addKeyListener(new KeyControler(model, ground));
+		KeyControler k = new KeyControler(model, ground);
+		mainFrame.addKeyListener(k);
+		MouseControler mc = new MouseControler(k, ground);
+		mainFrame.addMouseMotionListener(mc);
+		mainFrame.addMouseListener(mc);
 	}
 	
 	

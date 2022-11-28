@@ -15,7 +15,6 @@ import model.Model;
 public class TeamMenuUI extends DefaultUI {
 	
 	//CONSTANTES DE CLASSES
-	public final static String SPRITE_LOC = "/sprite/UI/";
 	private static BufferedImage EMPTY_BAR;
 	private static BufferedImage LIFE_BAR;
 	private static BufferedImage XP_BAR;
@@ -69,8 +68,11 @@ public class TeamMenuUI extends DefaultUI {
 		int commandTeamNum = getCommandNum();
 		Font font = getFont();
 		
-		//Affichage de la boite
 		g.setColor(Color.LIGHT_GRAY);
+		g.setFont(font.deriveFont(Font.BOLD, (float)(PoglemonApp.SPRITE_SIZEX/2)));
+		g.setStroke(new BasicStroke(PoglemonApp.SPRITE_SIZEX / 16));
+		
+		//Affichage de la boite
 		int boxx = PoglemonApp.SPRITE_SIZEX;
 		int boxy = PoglemonApp.SPRITE_SIZEY;
 		int width = PoglemonApp.SCREEN_WIDTH - PoglemonApp.SPRITE_SIZEX * 2;
@@ -78,10 +80,8 @@ public class TeamMenuUI extends DefaultUI {
 		g.fillRoundRect(boxx, boxy, width, height, 10, 10);
 		
 		//Affichage des boites d'équipes
-		g.setStroke(new BasicStroke(PoglemonApp.SPRITE_SIZEX / 16));
 		int boxWidth = (width - PoglemonApp.SPRITE_SIZEX * 4) / 2;
 		int boxHeight = (height - PoglemonApp.SPRITE_SIZEY * 2) / 4;
-		g.setFont(font.deriveFont(Font.BOLD, (float)(PoglemonApp.SPRITE_SIZEX/2)));
 		int[] x = {boxx + PoglemonApp.SPRITE_SIZEX, boxx + PoglemonApp.SPRITE_SIZEX + width/2, boxx + PoglemonApp.SPRITE_SIZEX, boxx + PoglemonApp.SPRITE_SIZEX + width/2,boxx + PoglemonApp.SPRITE_SIZEX, boxx + PoglemonApp.SPRITE_SIZEX + width/2};
 		int[] y = {boxy + PoglemonApp.SPRITE_SIZEY, boxy + PoglemonApp.SPRITE_SIZEY, boxy + PoglemonApp.SPRITE_SIZEY + height/4, boxy + PoglemonApp.SPRITE_SIZEY + height/4, boxy + PoglemonApp.SPRITE_SIZEY + 2*(height/4), boxy + PoglemonApp.SPRITE_SIZEY + 2*(height/4)};
 		for (int i = 0; i < 6; i++) {
@@ -91,11 +91,13 @@ public class TeamMenuUI extends DefaultUI {
 				g.setColor(Color.DARK_GRAY);
 			}
 			g.fillRoundRect(x[i], y[i], boxWidth, boxHeight, 10, 10);
+			addListButton(x[i], y[i] + PoglemonApp.SPRITE_SIZEY/2, boxWidth, boxHeight);
 		}
 		g.setColor(Color.black);
 		for (int i = 0; i < 6; i++) {
 			g.drawRoundRect(x[i], y[i], boxWidth, boxHeight, 10, 10);
 		}
+		
 		//Affichage des sprites
 		for (int i = 0; i < 6; i++) {
 			if(!isInit[i]) {
@@ -104,10 +106,10 @@ public class TeamMenuUI extends DefaultUI {
 			g.drawImage(spriteTeam[i], x[i] + PoglemonApp.SPRITE_SIZEX/2, y[i], boxHeight, boxHeight, null);
 			g.drawString(nameTeam[i], x[i] + PoglemonApp.SPRITE_SIZEX + boxHeight, (int)(y[i] + PoglemonApp.SPRITE_SIZEY/1.5));
 			g.drawString("Niv: " + String.valueOf(levelTeam[i]), x[i] + PoglemonApp.SPRITE_SIZEX + boxHeight, (int)(y[i] + PoglemonApp.SPRITE_SIZEY*2.5));
-			xpTeam[i] = 25;
 			createBar(g, x[i] + (int)(PoglemonApp.SPRITE_SIZEX * 0.8) + boxHeight, (int)(y[i] + PoglemonApp.SPRITE_SIZEY/1.0), 0, 5.0, hpTeam[i] / hpMaxTeam[i]);
 			createBar(g, x[i] + (int)(PoglemonApp.SPRITE_SIZEX * 0.8) + boxHeight, (int)(y[i] + PoglemonApp.SPRITE_SIZEY*1.5), 1, 5.0, xpTeam[i] / xpMaxTeam[i]);
 		}
+		
 		
 		g.setFont(font.deriveFont(Font.BOLD, (float)(PoglemonApp.SPRITE_SIZEX/1)));
 		
