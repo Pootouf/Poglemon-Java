@@ -21,10 +21,10 @@ public class PoglemonApp {
 	
 	//SCREEN_SETTING
 	//Taille de l'écran en case
-	public static int SCREEN_TILEX = 24;
-	public static int SCREEN_TILEY = 16;
+	public static int SCREEN_TILEX = 48;
+	public static int SCREEN_TILEY = 32;
 	//Taille des sprites en pixel
-	public static int SPRITE_SIZEX = 64;
+	public static int SPRITE_SIZEX = 32;
 	public static int SPRITE_SIZEY = SPRITE_SIZEX;
 	//Taille de l'écran en pixel
 	public static int SCREEN_WIDTH = SCREEN_TILEX * SPRITE_SIZEX;
@@ -156,8 +156,8 @@ public class PoglemonApp {
 		KeyControler k = new KeyControler(model, ground);
 		mainFrame.addKeyListener(k);
 		MouseControler mc = new MouseControler(k, ground);
-		mainFrame.addMouseMotionListener(mc);
-		mainFrame.addMouseListener(mc);
+		mainFrame.getContentPane().addMouseMotionListener(mc);
+		mainFrame.getContentPane().addMouseListener(mc);
 	}
 	
 	

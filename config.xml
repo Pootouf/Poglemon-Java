@@ -13,7 +13,7 @@
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon>E:\Programmation\Java\Poglemon\Poglemon-Java\res\sprite\icone.ico</icon>
+  <icon>E:\Programmation\Java\Poglemon\Poglemon-Java\bin\sprite\icone.ico</icon>
   <jre>
     <path>%JAVA_HOME%;%PATH%</path>
     <requiresJdk>false</requiresJdk>

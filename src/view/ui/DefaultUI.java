@@ -113,7 +113,7 @@ public abstract class DefaultUI {
 		g.drawString(text, x, y);
 		
 		buttonPlacement.get(0).add(x - PoglemonApp.SPRITE_SIZEX / 2);
-		buttonPlacement.get(1).add((int)(y - PoglemonApp.SPRITE_SIZEY*size/2 - getHeight(text, g) * 0.85 / 2));
+		buttonPlacement.get(1).add((int)(y - PoglemonApp.SPRITE_SIZEY*size/2 - getHeight(text, g) * 0.85));
 		buttonPlacement.get(2).add(getLength(text, g) + PoglemonApp.SPRITE_SIZEX);
 		buttonPlacement.get(3).add(getHeight(text, g) + (int)(PoglemonApp.SPRITE_SIZEY*size));
 	}
