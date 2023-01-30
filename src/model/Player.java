@@ -148,4 +148,6 @@ public class Player{
       	sprite[i] = scaledImage;
     }
 
+
+
 }

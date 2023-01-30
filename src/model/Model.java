@@ -118,7 +118,7 @@ public class Model{
 	}
 	
 	public AbstractObject getObject(int x, int y) {
-		if(x < 0 || y < 0) {
+		if(x < 0 || y < 0 || x >= PoglemonApp.WORLD_TILEX || y >= PoglemonApp.WORLD_TILEY) {
 			return null;
 		}
 		return AbstractObject.objectTab[x][y];
@@ -160,6 +160,10 @@ public class Model{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void setPlayer(Player p) {
+		player = p;
 	}
 	
 }

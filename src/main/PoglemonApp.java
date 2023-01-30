@@ -2,10 +2,12 @@ package main;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.concurrent.Semaphore;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import controler.EventHandler;
 import controler.KeyControler;
 import controler.MouseControler;
 import model.Model;
@@ -42,9 +44,11 @@ public class PoglemonApp {
 	
 	//SYSTEM SETTING
 	//Attente avant de détecter un appui de touche
-	public static final int WAIT_BEFORE_ACTION = 5;
+	public static final int WAIT_BEFORE_ACTION = 100;
 	//FPS
 	public static int FPS = 200;
+	//Semaphore bloquant l'affichage
+	public Semaphore displayMovementSemaphore;
 	
 	//PLAYER_SETTING
 	//Définit si le joueur peut passer à travers un mur
@@ -66,6 +70,9 @@ public class PoglemonApp {
 	
 	//ATTRIBUTS
 	
+	//EVENT
+	private EventHandler eventHandler;
+	
 	//AFFICHAGE
 	private static JFrame mainFrame;
 	private static Screen ground;
@@ -83,6 +90,7 @@ public class PoglemonApp {
 	//CONSTRUCTEURS
 	public PoglemonApp() {
 		gameState = TITLE_STATE;
+		displayMovementSemaphore = new Semaphore(1, true);
 		createModel();
 		createView();
 		placeComponents();
@@ -153,9 +161,10 @@ public class PoglemonApp {
 			e.printStackTrace();
 		}
 		
-		KeyControler k = new KeyControler(model, ground);
+		eventHandler = new EventHandler(ground, model, displayMovementSemaphore);
+		KeyControler k = new KeyControler(eventHandler);
 		mainFrame.addKeyListener(k);
-		MouseControler mc = new MouseControler(k, ground);
+		MouseControler mc = new MouseControler(ground, eventHandler);
 		mainFrame.getContentPane().addMouseMotionListener(mc);
 		mainFrame.getContentPane().addMouseListener(mc);
 	}
@@ -188,7 +197,14 @@ public class PoglemonApp {
   					timer += (currentTime - lastTime);
   					lastTime = currentTime;
   					if(delta >= 1) {
+  						try {
+							game.displayMovementSemaphore.acquire();
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
   						game.refresh();
+  						game.displayMovementSemaphore.release();
   						delta--;
   						drawCount++;
   					}

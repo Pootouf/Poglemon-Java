@@ -25,7 +25,6 @@ public class DescriptorMenuUI extends DefaultUI {
 		Font font = getFont();
 		
 		g.setColor(Color.LIGHT_GRAY);
-		g.setFont(font.deriveFont(Font.BOLD, (float)(PoglemonApp.SPRITE_SIZEX/2)));
 		g.setStroke(new BasicStroke(PoglemonApp.SPRITE_SIZEX / 16));
 		
 		//Affichage de la boite
@@ -37,11 +36,11 @@ public class DescriptorMenuUI extends DefaultUI {
 		
 		
 		
-		g.setFont(font.deriveFont(Font.BOLD, (float)(PoglemonApp.SPRITE_SIZEX)));
+		g.setFont(font.deriveFont(Font.BOLD, (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? getResizeX(1) : getResizeY(1))));
 		//Affichage du bouton revenir
 		String text = "Revenir";
 		int textX = getCenterXForTextBox(text, g, width, boxx);
-		int textY = boxy + height - PoglemonApp.SPRITE_SIZEY*1;
+		int textY = boxy + height - getResizeY(1);
 		createButton(g, textX, textY, commandNum == 0, text, 0.2);
 		
 		

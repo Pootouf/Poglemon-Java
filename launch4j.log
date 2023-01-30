@@ -331,3 +331,74 @@ Launcher:	C:\Program Files\Java\jdk-18.0.1.1\bin\javaw.exe
 Launcher args:	-jar "E:\Programmation\Java\Poglemon\Poglemon-Java\.\bin\Poglemon_run.jar"
 Args length:	74/32768 chars
 Exit code:	0
+
+
+Version:	3.50
+CmdLine:	E:\Programmation\Java\Poglemon\Poglemon-Java\Poglemon.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	E:\Programmation\Java\Poglemon\Poglemon-Java\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	1.017.000
+Java max ver:	
+Substitute:	JAVA_HOME = 
+Substitute:	PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\Etienne\AppData\Local\Microsoft\WindowsApps;C:\Users\Etienne\AppData\Local\atom\bin;C:\Users\Etienne\AppData\Local\GitHubDesktop\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Java\jre1.8.0_351\bin
+JRE paths:	;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\Etienne\AppData\Local\Microsoft\WindowsApps;C:\Users\Etienne\AppData\Local\atom\bin;C:\Users\Etienne\AppData\Local\GitHubDesktop\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Java\jre1.8.0_351\bin
+Check launcher:	C:\Program Files\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\Common Files\Oracle\Java\javapath\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\system32\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\System32\Wbem\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\System32\WindowsPowerShell\v1.0\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\System32\OpenSSH\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\dotnet\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\system32\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\System32\Wbem\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\System32\WindowsPowerShell\v1.0\bin\javaw.exe (not found)
+Check launcher:	C:\WINDOWS\System32\OpenSSH\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Git\cmd\bin\javaw.exe (not found)
+Check launcher:	C:\Users\Etienne\AppData\Local\Microsoft\WindowsApps\bin\javaw.exe (not found)
+Check launcher:	C:\Users\Etienne\AppData\Local\atom\bin\javaw.exe (not found)
+Check launcher:	C:\Users\Etienne\AppData\Local\GitHubDesktop\bin\javaw.exe (not found)
+Check launcher:	E:\Programmation\Java\Poglemon\Poglemon-Java\%USERPROFILE%\AppData\Local\Microsoft\WindowsApps\bin\javaw.exe (not found)
+Check launcher:	C:\Program Files\Java\jre1.8.0_351\bin\javaw.exe (OK)
+Version string: 1.008.000_351 / 64-Bit (Ignore)
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.6
+Version string: 1.006.000 / 64-Bit (Ignore)
+Ignore:		1.006.000
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.6.0_45
+Version string: 1.006.000_045 / 64-Bit (Ignore)
+Ignore:		1.006.000_045
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Version string: 1.008.000 / 64-Bit (Ignore)
+Ignore:		1.008.000
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_351
+Version string: 1.008.000_351 / 64-Bit (Ignore)
+Ignore:		1.008.000_351
+32-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.6
+Version string: 1.006.000 / 64-Bit (Ignore)
+Ignore:		1.006.000
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.6.0_45
+Version string: 1.006.000_045 / 64-Bit (Ignore)
+Ignore:		1.006.000_045
+32-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+64-bit search:	SOFTWARE\JavaSoft\JRE...
+32-bit search:	SOFTWARE\JavaSoft\JRE...
+64-bit search:	SOFTWARE\JavaSoft\JDK...
+Check:		SOFTWARE\JavaSoft\JDK\18.0.1.1
+Warning:	formatJavaVersion() too many parts added.
+Version string: 1.018.000_001 / 64-Bit (OK)
+Check launcher:	C:\Program Files\Java\jdk-18.0.1.1\bin\javaw.exe (OK)
+Match:		1.018.000_001
+Runtime used:	1.018.000_001 (64-bit)
+Launcher:	C:\Program Files\Java\jdk-18.0.1.1\bin\javaw.exe
+Launcher args:	-jar "E:\Programmation\Java\Poglemon\Poglemon-Java\.\bin\Poglemon_run.jar"
+Args length:	74/32768 chars
+Exit code:	0

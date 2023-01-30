@@ -50,7 +50,7 @@ public class Screen extends JComponent {
 	
 	//REQUETES
 	
-	public UIManager uiManager() {
+	public UIManager getUIManager() {
 		return uiManager;
 	}
 	
@@ -58,6 +58,7 @@ public class Screen extends JComponent {
 	//COMMANDES
 	
 	public void refresh(Model m) {
+		
 		if(PoglemonApp.gameState == PoglemonApp.PLAY_STATE) {
 			//Rafraichissement des tuiles
 			spriteManager.refresh(m, playerSprite);
@@ -72,13 +73,14 @@ public class Screen extends JComponent {
 		
 		//Rafraichissement de l'affichage de l'UI
 		uiManager.refresh(m);
+		
 	}
 	
 	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Graphics2D g2D = (Graphics2D) g;
+		Graphics2D g2D = (Graphics2D) g.create();
 		
 		if(PoglemonApp.gameState != PoglemonApp.TITLE_STATE) {
 		
@@ -92,7 +94,16 @@ public class Screen extends JComponent {
 		uiManager.draw(g2D);
 		
 		g2D.dispose();
+		
+		try {
+			Thread.sleep(0);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+	
+
 	
 	
 	public void playMusic(int i) {

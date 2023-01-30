@@ -9,16 +9,16 @@ import view.Screen;
 public class MouseControler extends MouseInputAdapter {
 	
 	//ATTRIBUTS
-	private KeyControler controler;
 	private Screen screen;
+	private EventHandler eventHandler;
 	
 	
 	
 	
 	//CONSTRUCTEURS
-	public MouseControler(KeyControler k, Screen s) {
-		controler = k;
+	public MouseControler(Screen s, EventHandler e) {
 		screen = s;
+		eventHandler = e;
 	}
 		
 	
@@ -31,7 +31,7 @@ public class MouseControler extends MouseInputAdapter {
 		
 		int mouseX = e.getX();
 		int mouseY = e.getY();
-		view.ui.UIManager ui = screen.uiManager();
+		view.ui.UIManager ui = screen.getUIManager();
 		
 		int i = ui.isButton(mouseX, mouseY);
 		if(i != -1 && ui.getCommandNum() != i) {
@@ -45,14 +45,14 @@ public class MouseControler extends MouseInputAdapter {
 	public void mousePressed(MouseEvent e) {
 		int mouseX = e.getX();
 		int mouseY = e.getY();
-		view.ui.UIManager ui = screen.uiManager();
+		view.ui.UIManager ui = screen.getUIManager();
 		
 		int i = ui.isButton(mouseX, mouseY);
 		if(i != -1 && ui.getCommandNum() != i) {
 			screen.playSoundEffect(1);
 		}
 		ui.setCommandNum(i);
-		controler.eventMenu(i);
+		eventHandler.eventMenu(i);
 	}
 
 }

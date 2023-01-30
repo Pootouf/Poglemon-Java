@@ -69,21 +69,21 @@ public class TeamMenuUI extends DefaultUI {
 		Font font = getFont();
 		
 		g.setColor(Color.LIGHT_GRAY);
-		g.setFont(font.deriveFont(Font.BOLD, (float)(PoglemonApp.SPRITE_SIZEX*((PoglemonApp.SCREEN_TILEX * 1f) / 24f))));
+		g.setFont(font.deriveFont(Font.BOLD, (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? getResizeX(1) : getResizeY(1))));
 		g.setStroke(new BasicStroke(PoglemonApp.SPRITE_SIZEX / 16));
 		
 		//Affichage de la boite
-		int boxx = (int)(PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 1f) / 24f));
-		int boxy = (int)(PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f));
-		int width = (int)(PoglemonApp.SCREEN_WIDTH - PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 2f) / 24f));
-		int height = (int)(PoglemonApp.SCREEN_HEIGHT - PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f));
+		int boxx = getResizeX(1);
+		int boxy = getResizeY(1) / 2;
+		int width = PoglemonApp.SCREEN_WIDTH - getResizeX(2);
+		int height = PoglemonApp.SCREEN_HEIGHT - getResizeY(1);
 		g.fillRoundRect(boxx, boxy, width, height, 10, 10);
 		
 		//Affichage des boites d'équipes
-		int boxWidth = (int)((width - PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 4f) / 24f)) / 2);
-		int boxHeight = (int)((height - PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 2f) / 16f)) / 4);
-		int[] x = {(int)(boxx + PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 1f) / 24f)), (int)(boxx + PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 1f) / 24f) + width/2), (int)(boxx + PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 1f) / 24f)), (int)(boxx + PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 1f) / 24f) + width/2), (int)(boxx + PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 1f) / 24f)), (int)(boxx + PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 1f) / 24f) + width/2)};
-		int[] y = {(int)(boxy + PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f)), (int)(boxy + PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f)), (int)(boxy + PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f) + height/4), (int)(boxy + PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f) + height/4), (int)(boxy + PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f) + 2*(height/4)), (int)(boxy + PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f) + 2*(height/4))};
+		int boxWidth = (width - getResizeX(4))/2;
+		int boxHeight = (height - getResizeY(2))/4;
+		int[] x = { boxx + getResizeX(1), boxx + getResizeX(1) + width/2, boxx + getResizeX(1), boxx + getResizeX(1) + width/2, boxx + getResizeX(1), boxx + getResizeX(1) + width/2};
+		int[] y = {boxy + getResizeY(1), boxy + getResizeY(1), boxy + getResizeY(1) + height/4, boxy + getResizeY(1) + height/4, boxy + getResizeY(1) + 2*(height/4), boxy + getResizeY(1) + 2*(height/4)};
 		for (int i = 0; i < 6; i++) {
 			if (commandTeamNum == i) {
 				g.setColor(Color.gray);
@@ -103,20 +103,20 @@ public class TeamMenuUI extends DefaultUI {
 			if(!isInit[i]) {
 				continue;
 			}
-			g.drawImage(spriteTeam[i], x[i] + (int)(PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 0.3f) / 24f)), y[i], boxWidth / 3, boxHeight, null);
-			g.drawString(nameTeam[i], x[i] + PoglemonApp.SPRITE_SIZEX*((PoglemonApp.SCREEN_TILEX * 1f) / 24f) + boxHeight, (int)(y[i] + PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * 1f) / 16f)));
-			g.drawString("Niv: " + String.valueOf(levelTeam[i]), x[i] + PoglemonApp.SPRITE_SIZEX*((PoglemonApp.SCREEN_TILEX * 1f) / 24f) + boxHeight, (int)(y[i] + PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * 3f) / 16f)));
-			createBar(g, x[i] + (int)(PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 0.8f) / 24f)) + boxHeight, (int)(y[i] + PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * 1.3f) / 16f)), 0, 5.0, hpTeam[i] / hpMaxTeam[i]);
-			createBar(g, x[i] + (int)(PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * 0.8f) / 24f)) + boxHeight, (int)(y[i] + PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * 1.7f) / 16f)), 1, 5.0, xpTeam[i] / xpMaxTeam[i]);
+			g.drawImage(spriteTeam[i], x[i] + getResizeX(0.3f), y[i], boxWidth / 3, boxHeight, null);
+			g.drawString(nameTeam[i], x[i] + getResizeX(1) + (boxWidth / 3), y[i] + getResizeY(1));
+			g.drawString("Niv: " + String.valueOf(levelTeam[i]), x[i] + getResizeX(1) + (boxWidth / 3), y[i] + getResizeY(3));
+			createBar(g, x[i] + getResizeX(0.8f) + (boxWidth / 3), y[i] + getResizeY(1.3f), 0, 5.0, hpTeam[i] / hpMaxTeam[i]);
+			createBar(g, x[i] + getResizeX(0.8f) + (boxWidth / 3), y[i] + getResizeY(1.7f), 1, 5.0, xpTeam[i] / xpMaxTeam[i]);
 		}
 		
 		
-		g.setFont(font.deriveFont(Font.BOLD, (PoglemonApp.SPRITE_SIZEX*((PoglemonApp.SCREEN_TILEX * 1f) / 24f))));
+		g.setFont(font.deriveFont(Font.BOLD, (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? getResizeX(1) : getResizeY(1))));
 		
 		//Affichage du bouton revenir
 		String text = "Revenir";
 		int textX = getCenterXForTextBox(text, g, width, boxx);
-		int textY = (int)(boxy + height - PoglemonApp.SPRITE_SIZEY* ((PoglemonApp.SCREEN_TILEY * 1f) / 16f));
+		int textY = (int)(boxy + height - getResizeY(1));
 		createButton(g, textX, textY, commandTeamNum == 6, text, 0.2);
 		
 		
@@ -127,13 +127,13 @@ public class TeamMenuUI extends DefaultUI {
 	//OUTILS
 	
 	protected void createBar(Graphics2D g, int x, int y, int xpOrLife, double size, double proportion) {
-		g.drawImage(EMPTY_BAR, x , y, (int)(PoglemonApp.SPRITE_SIZEX *((PoglemonApp.SCREEN_TILEX * 1f) / 24f) * size), (int)(PoglemonApp.SPRITE_SIZEY * ((PoglemonApp.SCREEN_TILEY * 1f) / 16f))/3, null);
+		g.drawImage(EMPTY_BAR, x , y, (int)(getResizeX(1) * size), getResizeY(1)/3, null);
 		switch(xpOrLife) {
 		case 0:
-			g.drawImage(LIFE_BAR, x + (int)(PoglemonApp.SPRITE_SIZEX*((PoglemonApp.SCREEN_TILEX * 0.2f) / 24f)) , y + (int)(PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * 0.1f) / 16f)), (int)(PoglemonApp.SPRITE_SIZEX*((PoglemonApp.SCREEN_TILEX * 0.93f) / 24f) * size * proportion), (int)(PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * 0.15f) / 16f)), null);
+			g.drawImage(LIFE_BAR, x + getResizeX(0.2f) , y + getResizeY(0.1f), (int)(getResizeX(0.94f) * size * proportion), getResizeY(0.15f), null);
 			break;
 		case 1:
-			g.drawImage(XP_BAR, x + (int)(PoglemonApp.SPRITE_SIZEX *((PoglemonApp.SCREEN_TILEX * 0.2f) / 24f)), y + (int)(PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * 0.1f) / 16f)), (int)(PoglemonApp.SPRITE_SIZEX*((PoglemonApp.SCREEN_TILEX * 0.93f) / 24f) * size * proportion), (int)(PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * 0.15f) / 16f)), null);
+			g.drawImage(XP_BAR, x + getResizeX(0.2f), y + getResizeY(0.1f), (int)(getResizeX(0.94f) * size * proportion), getResizeY(0.15f), null);
 		}
 	}
 

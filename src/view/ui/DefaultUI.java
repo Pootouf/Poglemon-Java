@@ -124,4 +124,12 @@ public abstract class DefaultUI {
 		buttonPlacement.get(2).add(sx);
 		buttonPlacement.get(3).add(sy);
 	}
+	
+	protected int getResizeX(float f) {
+		return (int)(PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * f) / 24f));
+	}
+	
+	protected int getResizeY(float f) {
+		return (int)(PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * f) / 16f));
+	}
 }
