@@ -23,57 +23,57 @@ public class GameMenuUI extends DefaultUI{
 		
 		//Affichage de la boite
 		g.setColor(Color.LIGHT_GRAY);
-		int boxx = PoglemonApp.SCREEN_WIDTH - getResizeX(9);
+		int boxx = PoglemonApp.SCREEN_WIDTH - getResizeX(350);
 		int boxy = PoglemonApp.SPRITE_SIZEY;
-		int width = getResizeX(8);
-		int height = getResizeY(10f);
+		int width = getResizeX(300);
+		int height = getResizeY(500);
 		g.fillRoundRect(boxx, boxy, width, height, 10, 10);
 		
 		//Affichage des textes
 		g.setColor(Color.black);
-		g.setFont(font.deriveFont(Font.BOLD, (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? getResizeX(1.5f) : getResizeY(1.5f))));
-		g.setStroke(new BasicStroke(PoglemonApp.SPRITE_SIZEX / 8));
+		g.setFont(font.deriveFont(Font.BOLD, getFontSize(50)));
+		g.setStroke(new BasicStroke(getResizeX(3)));
 		
 	    String text = "Menu";
-		int y = boxy + getResizeY(1.7f);
+		int y = boxy + getResizeY(60);
 		int x = getCenterXForTextBox(text, g, width, boxx);
 		g.drawString(text, x, y);
 		
-		g.setFont(font.deriveFont(Font.BOLD, (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? getResizeX(0.8f) : getResizeY(0.8f))));
+		g.setFont(font.deriveFont(Font.BOLD, getFontSize(30)));
 		
 		text = "Equipe";
-		y += getResizeY(1.3f);
+		y += getResizeY(90);
 		x = getCenterXForTextBox(text, g, width, boxx);
 		createButton(g, x, y, commandGameMenuNum == 0, text, 0.2);
 		
 		text = "PC";
-		y += getResizeY(1.3f);
+		y += getResizeY(60);
 		x = getCenterXForTextBox(text, g, width, boxx);
 		createButton(g, x, y, commandGameMenuNum == 1, text, 0.2);
 		
 		text = "Sauvegarder";
-		y += getResizeY(1.3f);
+		y += getResizeY(60);
 		x = getCenterXForTextBox(text, g, width, boxx);
 		createButton(g, x, y, commandGameMenuNum == 2, text, 0.2);
 		
 		text = "Options";
-		y += getResizeY(1.3f);
+		y += getResizeY(60);
 		x = getCenterXForTextBox(text, g, width, boxx);
 		createButton(g, x, y, commandGameMenuNum == 3, text, 0.2);
 		
 		text = "Revenir";
-		y += getResizeY(1.3f);
+		y += getResizeY(60);
 		x = getCenterXForTextBox(text, g, width, boxx);
 		createButton(g, x, y, commandGameMenuNum == 4, text, 0.2);
 		
 		text = "Quitter";
-		y += getResizeY(1.3f);
+		y += getResizeY(60);
 		x = getCenterXForTextBox(text, g, width, boxx);
 		createButton(g, x, y, commandGameMenuNum == 5, text, 0.2);
 		
 		
 		//Affichage de la bordure
-		g.setStroke(new BasicStroke(PoglemonApp.SPRITE_SIZEX / 16));
+		g.setStroke(new BasicStroke(getResizeX(4)));
 		g.drawRoundRect(boxx, boxy, width, height, 10, 10);
 	}
 

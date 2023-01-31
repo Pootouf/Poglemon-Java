@@ -27,44 +27,44 @@ public class TitleMenuUI extends DefaultUI {
 		//BACKGROUND
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, PoglemonApp.SCREEN_WIDTH, PoglemonApp.SCREEN_HEIGHT);
-		int baseFontSize = (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? PoglemonApp.SCREEN_TILEX : PoglemonApp.SCREEN_TILEY);
+		int baseFontSize = (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? getResizeX(300f) : getResizeY(300f));
 		
 		
 		//TITLE NAME
-		g.setFont(font.deriveFont(Font.BOLD, baseFontSize * 8 * (PoglemonApp.SPRITE_SIZEX / 64f)));
+		g.setFont(font.deriveFont(Font.BOLD, baseFontSize));
 		String title = "Poglemon";
 		int x = getCenterXForText(title, g);
-		int y = PoglemonApp.SPRITE_SIZEY * (PoglemonApp.SCREEN_TILEY / 4);
+		int y = getResizeY(325f);
 		//SHADOW
 		g.setColor(Color.black);
-		g.drawString(title, x + 7, y + 7);
+		g.drawString(title, x + getResizeX(7f), y + getResizeY(7f));
 		//TEXT
 		g.setColor(Color.white);
 		g.drawString(title, x, y);
 		
 		
 		//MENU
-		g.setFont(font.deriveFont(Font.BOLD, baseFontSize * 3 * (PoglemonApp.SPRITE_SIZEX / 64f)));
-		g.setStroke(new BasicStroke(PoglemonApp.SPRITE_SIZEX / 8));
+		g.setFont(font.deriveFont(Font.BOLD, baseFontSize/6));
+		g.setStroke(new BasicStroke(getResizeX(3f)));
 		
 		String text = "Nouvelle Partie";
 		x = getCenterXForText(text, g);
-		y += getResizeY(2.5f);
+		y += getResizeY(250f);
 		createButton(g, x, y, commandNum == 0, text, 1);
 		
 		text = "Charger une partie";
 		x = getCenterXForText(text, g);
-		y += getResizeY(2.5f);
+		y += getResizeY(130f);
 		createButton(g, x, y, commandNum == 1, text, 1);
 		
 		text = "Options";
 		x = getCenterXForText(text, g);
-		y += getResizeY(2.5f);
+		y += getResizeY(130f);
 		createButton(g, x, y, commandNum == 2, text, 1);
 		
 		text = "Quitter";
 		x = getCenterXForText(text, g);
-		y += getResizeY(2.5f);
+		y += getResizeY(130f);
 		createButton(g, x, y, commandNum == 3, text, 1);
 		
 	}

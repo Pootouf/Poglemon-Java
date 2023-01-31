@@ -39,6 +39,17 @@ public class EventHandler {
 	//COMMANDES
 	
 	public void onKeyPressed() { 
+		
+		boolean upPressed = this.upPressed;
+		boolean downPressed = this.downPressed;
+		boolean leftPressed = this.leftPressed;
+		boolean rightPressed = this.rightPressed;
+		boolean mPressed = this.mPressed;
+		boolean escapePressed = this.escapePressed;
+		boolean spacePressed = this.spacePressed;
+		boolean enterPressed = this.enterPressed;
+		boolean f3Pressed = this.f3Pressed;
+		
 		if(System.currentTimeMillis() - lastPressProcessed <= PoglemonApp.WAIT_BEFORE_ACTION) {
 	   		 return;
 	   	}

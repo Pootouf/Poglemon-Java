@@ -126,10 +126,14 @@ public abstract class DefaultUI {
 	}
 	
 	protected int getResizeX(float f) {
-		return (int)(PoglemonApp.SPRITE_SIZEX * ((PoglemonApp.SCREEN_TILEX * f) / 24f));
+		return (int)((PoglemonApp.SCREEN_WIDTH * f) / 1920f);
 	}
 	
 	protected int getResizeY(float f) {
-		return (int)(PoglemonApp.SPRITE_SIZEY*((PoglemonApp.SCREEN_TILEY * f) / 16f));
+		return (int)((PoglemonApp.SCREEN_HEIGHT * f) / 1080f);
+	}
+	
+	protected int getFontSize(float f) {
+		return (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? getResizeX(f) : getResizeY(f));
 	}
 }

@@ -51,11 +51,12 @@ public class PlayMenuUI extends DefaultUI {
 		Font font = getFont();
 		
 		if(isInfoOpen) {
-			g.setFont(font.deriveFont(Font.BOLD, (float)PoglemonApp.SPRITE_SIZEX / 2));
+			float fontSize = 50f;
+			g.setFont(font.deriveFont(Font.BOLD, getFontSize(fontSize - 10f)));
 			g.setColor(Color.black);
-			g.drawString("fps: " + PoglemonApp.fps(), PoglemonApp.SPRITE_SIZEX / 2, PoglemonApp.SPRITE_SIZEY / 2);
-			g.drawString("X: " + tilex, PoglemonApp.SPRITE_SIZEX / 2, PoglemonApp.SPRITE_SIZEY);
-			g.drawString("Y: " + tiley, PoglemonApp.SPRITE_SIZEX / 2, (int) (PoglemonApp.SPRITE_SIZEY * 1.5));
+			g.drawString("FPS: " + PoglemonApp.fps(), getResizeX(fontSize),  getFontSize(fontSize));
+			g.drawString("X: " + tilex, getResizeX(fontSize), getFontSize(fontSize * 2));
+			g.drawString("Y: " + tiley, getResizeX(fontSize), getFontSize(fontSize * 3));
 		}
 		
 		int x = PoglemonApp.SCREEN_WIDTH - (int)(PoglemonApp.SPRITE_SIZEX * 1.5);

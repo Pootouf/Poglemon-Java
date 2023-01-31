@@ -25,26 +25,26 @@ public class DescriptorMenuUI extends DefaultUI {
 		Font font = getFont();
 		
 		g.setColor(Color.LIGHT_GRAY);
-		g.setStroke(new BasicStroke(PoglemonApp.SPRITE_SIZEX / 16));
 		
 		//Affichage de la boite
-		int boxx = PoglemonApp.SPRITE_SIZEX;
-		int boxy = PoglemonApp.SPRITE_SIZEY;
-		int width = PoglemonApp.SCREEN_WIDTH - PoglemonApp.SPRITE_SIZEX * 2;
-		int height = PoglemonApp.SCREEN_HEIGHT - PoglemonApp.SPRITE_SIZEY * 2;
+		int boxx = getResizeX(PoglemonApp.SPRITE_SIZEX);
+		int boxy = getResizeY(PoglemonApp.SPRITE_SIZEY);
+		int width = PoglemonApp.SCREEN_WIDTH - getResizeX(PoglemonApp.SPRITE_SIZEX * 2);
+		int height = PoglemonApp.SCREEN_HEIGHT - getResizeY(PoglemonApp.SPRITE_SIZEY * 2);
 		g.fillRoundRect(boxx, boxy, width, height, 10, 10);
 		
 		
-		
-		g.setFont(font.deriveFont(Font.BOLD, (PoglemonApp.SCREEN_TILEX < PoglemonApp.SCREEN_TILEY ? getResizeX(1) : getResizeY(1))));
+		g.setStroke(new BasicStroke(getResizeX(3)));
+		g.setFont(font.deriveFont(Font.BOLD, getFontSize(70)));
 		//Affichage du bouton revenir
 		String text = "Revenir";
 		int textX = getCenterXForTextBox(text, g, width, boxx);
-		int textY = boxy + height - getResizeY(1);
+		int textY = boxy + height - getResizeY(100);
 		createButton(g, textX, textY, commandNum == 0, text, 0.2);
 		
 		
 		//Affichage de la bordure
+		g.setStroke(new BasicStroke(getResizeX(4)));
 		g.drawRoundRect(boxx, boxy, width, height, 10, 10);
 
 	}

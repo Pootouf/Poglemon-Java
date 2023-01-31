@@ -94,13 +94,6 @@ public class Screen extends JComponent {
 		uiManager.draw(g2D);
 		
 		g2D.dispose();
-		
-		try {
-			Thread.sleep(0);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 

@@ -38,7 +38,7 @@ public class KeyControler implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
     	int key = e.getKeyCode();
-  		 eventHandler.setKeyValue(false, key);
+  		eventHandler.setKeyValue(false, key);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.util.concurrent.Semaphore;
 
@@ -46,7 +47,7 @@ public class PoglemonApp {
 	//Attente avant de détecter un appui de touche
 	public static final int WAIT_BEFORE_ACTION = 100;
 	//FPS
-	public static int FPS = 200;
+	public static int FPS = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].getDisplayMode().getRefreshRate();
 	//Semaphore bloquant l'affichage
 	public Semaphore displayMovementSemaphore;
 	
